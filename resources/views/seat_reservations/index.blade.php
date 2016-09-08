@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="seat-reservation">
-    
+
 
     <div class="row">
         <div class="col-md-4">
@@ -409,7 +409,7 @@
             </ol>
         </div>
 
-        
+
     </div>
 
 
@@ -456,15 +456,18 @@ $( document ).ready(function() {
             },
             data: data,
             success: function(response) {
-                console.debug(response);
-                // $('#make_reservation').prop('disabled', false);
+                if (response.length > 0) {
+                    $.each(response, function( index, value ) {
+
+                    });
+                }
             }
         });
     }
 
     $('.cabin :checkbox').change(function() {
         var $this = $(this);
-           
+
         if ($this.is(':checked')) {
             $this.closest('.seat').find('label').css('background', '#E6CAC4');
         } else {
