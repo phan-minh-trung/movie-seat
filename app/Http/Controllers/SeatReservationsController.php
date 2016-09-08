@@ -43,8 +43,10 @@ class SeatReservationsController extends Controller
     {
         $params = $request->all();
 
-        // insert new reservation
-        var_dump($params);
+        if (!empty($params) && isset($params['reservations'])) {
+            $reservations = $params['reservations'];
+            SeatReservation::insert($reservations);
+        }
 
         return response()->json($params);
     }

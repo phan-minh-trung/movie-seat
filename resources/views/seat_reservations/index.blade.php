@@ -419,16 +419,30 @@
 $( document ).ready(function() {
 
     $('#make_reservation').click(function() {
-        data = [{
-            name: 'test',
-            email: 'test',
-            phone: '1234',
-            price: '70000',
-            x_tier: 'A',
-            y_tier: '5'
-        }];
+        data = {
+            reservations: [
+                {
+                    movie_id: 10001,
+                    name: 'test',
+                    email: 'test',
+                    phone: '1234',
+                    price: '70000',
+                    x_tier: 'A',
+                    y_tier: '5'
+                },
+                {
+                    movie_id: 10001,
+                    name: 'test',
+                    email: 'test',
+                    phone: '1234',
+                    price: '70000',
+                    x_tier: 'A',
+                    y_tier: '5'
+                }
+            ]
+        };
 
-        $('#make_reservation').prop('disabled', true);
+        // $('#make_reservation').prop('disabled', true);
 
         make_reservation(data);
     });
@@ -440,10 +454,10 @@ $( document ).ready(function() {
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
             },
-            data: JSON.stringify(data),
+            data: data,
             success: function(response) {
                 console.debug(response);
-                $('#make_reservation').prop('disabled', false);
+                // $('#make_reservation').prop('disabled', false);
             }
         });
     }
