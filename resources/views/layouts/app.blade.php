@@ -14,8 +14,25 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-    
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('e15c92ee7fea7b068ff6', {
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('test_channel');
+        channel.bind('my_event', function(data) {
+            alert(data.message);
+        });
+    </script>
+
     <style>
         body {
             font-family: 'Lato';

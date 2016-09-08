@@ -42,6 +42,10 @@ class SeatReservationsController extends Controller
     public function book(Request $request)
     {
         $params = $request->all();
+
+        // insert new reservation
         var_dump($params);
+
+        return response()->json($params);
     }
 }
