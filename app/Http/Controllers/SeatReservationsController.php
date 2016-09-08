@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\SeatReservation;
 use Illuminate\Http\Request;
 use Session;
+use Pusher;
 
 class SeatReservationsController extends Controller
 {
@@ -18,7 +19,9 @@ class SeatReservationsController extends Controller
      */
     public function index()
     {
-        return view('seat_reservations.index');
+        $reservations = SeatReservation::all();
+
+        return view('seat_reservations.index', compact('reservations'));
     }
 
     /**
@@ -28,7 +31,7 @@ class SeatReservationsController extends Controller
      */
     public function list()
     {
-        $reservations = SeatReservation::paginate(25);
+        $reservations = SeatReservation::all();
 
         return view('seat_reservations.list', compact('reservations'));
     }
@@ -46,6 +49,24 @@ class SeatReservationsController extends Controller
         if (!empty($params) && isset($params['reservations'])) {
             $reservations = $params['reservations'];
             SeatReservation::insert($reservations);
+
+            $seats = [];
+            foreach ($reservations as $value) {
+                $seats[] = $value['x_tier'] . '_' . $value['y_tier'];
+            }
+
+            $options = array(
+                'encrypted' => true
+            );
+            $pusher = new Pusher(
+                'e15c92ee7fea7b068ff6',
+                'd4a59a6801c6c2c26043',
+                '246151',
+                $options
+            );
+
+            $data['message'] = json_encode($seats);
+            $pusher->trigger('test_channel', 'my_event', $data);
 
             return response()->json($reservations);
         }

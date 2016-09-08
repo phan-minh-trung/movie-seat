@@ -418,6 +418,11 @@
 <script>
 $( document ).ready(function() {
 
+    var reservations = {!! json_encode($reservations->toArray()) !!};
+    $.each(reservations, function( index, value ) {
+        makeSeatSold(value.x_tier + '_' + value.y_tier);
+    });
+
     $('#make_reservation').click(function() {
         data = {
             reservations: [
@@ -428,7 +433,7 @@ $( document ).ready(function() {
                     phone: '1234',
                     price: '70000',
                     x_tier: 'A',
-                    y_tier: '5'
+                    y_tier: '1'
                 },
                 {
                     movie_id: 10001,
@@ -437,7 +442,7 @@ $( document ).ready(function() {
                     phone: '1234',
                     price: '70000',
                     x_tier: 'A',
-                    y_tier: '5'
+                    y_tier: '2'
                 }
             ]
         };
@@ -458,8 +463,10 @@ $( document ).ready(function() {
             success: function(response) {
                 if (response.length > 0) {
                     $.each(response, function( index, value ) {
-
+                        cellId = value.x_tier + '_' + value.y_tier;
+                        $('input#' + cellId).closest('li').addClass('sold');
                     });
+                    alert("Registered the reservations successfull!");
                 }
             }
         });

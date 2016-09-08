@@ -43,6 +43,10 @@ ol {
     position: absolute;
     opacity: 0;
 }
+.seat.sold label {
+    background-color: #472B34 !important;
+    color: white;
+}
 label{
     display: block;
     position: relative;

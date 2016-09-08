@@ -29,8 +29,14 @@
 
         var channel = pusher.subscribe('test_channel');
         channel.bind('my_event', function(data) {
-            alert(data.message);
+            $.each(data.messate, function( index, value ) {
+                makeSeatSold(value);
+            });
         });
+
+        function makeSeatSold(cellId) {
+            $('input#' + cellId).closest('li').addClass('sold');
+        }
     </script>
 
     <style>
