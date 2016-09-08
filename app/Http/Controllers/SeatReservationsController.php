@@ -65,7 +65,7 @@ class SeatReservationsController extends Controller
                 $options
             );
 
-            $data['message'] = json_encode($seats);
+            $data['message'] = join(',', $seats);
             $pusher->trigger('test_channel', 'my_event', $data);
 
             return response()->json($reservations);

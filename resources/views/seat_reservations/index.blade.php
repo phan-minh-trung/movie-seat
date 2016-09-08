@@ -463,7 +463,7 @@ $( document ).ready(function() {
             alert('Please choose your seats!');
         }
 
-        
+
     });
 
     function make_reservation(data) {

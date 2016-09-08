@@ -29,7 +29,7 @@
 
         var channel = pusher.subscribe('test_channel');
         channel.bind('my_event', function(data) {
-            $.each(data.messate, function( index, value ) {
+            $.each(data.message.split(","), function( index, value ) {
                 makeSeatSold(value);
             });
         });
