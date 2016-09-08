@@ -79,3 +79,17 @@ label{
     margin-bottom: 50px;
     display: table;
 }
+
+.booked-list{
+    margin-top: 60px;
+}
+.buy-form{
+    padding-top: 10px;
+}
+
+.f-label{
+    display: inherit;
+    background: none;
+    width: 100%;
+    text-align: left;
+}

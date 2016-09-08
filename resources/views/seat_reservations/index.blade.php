@@ -3,13 +3,29 @@
 
 @section('content')
 
-<div class="seat-reservation">
+<div class="container seat-reservation">
 
 
     <div class="row">
         <div class="col-md-4 ">
             <div class="row booked-list"></div>
-            <div class="btn-buy"><button id="buy">Buy</button></div>
+
+            </br>
+            <form class="buy-form">
+                <div class="form-group">
+                    <label for="full-name" class="f-label">Full Name:</label>
+                    <input type="text" class="form-control" id="full-name">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="f-label">Email address:</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="f-label">Cell Phone:</label>
+                    <input type="number" class="form-control" id="phone">
+                </div>
+                <button type="button" class="btn btn-default" id="make_reservation">Buy</button>
+            </form>
         </div>
         <div class="col-md-8">
             <div class="stage">
@@ -413,9 +429,6 @@
 
     </div>
 
-
-<button id="make_reservation">make</button>
-
 <script>
 $( document ).ready(function() {
 
@@ -425,32 +438,32 @@ $( document ).ready(function() {
     });
 
     $('#make_reservation').click(function() {
-        data = {
-            reservations: [
-                {
-                    movie_id: 10001,
-                    name: 'test',
-                    email: 'test',
-                    phone: '1234',
-                    price: '70000',
-                    x_tier: 'A',
-                    y_tier: '1'
-                },
-                {
-                    movie_id: 10001,
-                    name: 'test',
-                    email: 'test',
-                    phone: '1234',
-                    price: '70000',
-                    x_tier: 'A',
-                    y_tier: '2'
-                }
-            ]
-        };
 
-        // $('#make_reservation').prop('disabled', true);
+        var reservations = [];
+        var $form = $('.buy-form');
+        var $bookedSeats = $('.booked-list span');
 
-        make_reservation(data);
+        if ($bookedSeats.length > 0) {
+            $.each( $bookedSeats, function( key, value ) {
+                reservations.push({
+                    movie_id: 10001,
+                    name: $form.find('#full-name').val(),
+                    email: $form.find('#email').val(),
+                    phone: $form.find('#phone').val(),
+                    price: '70000',
+                    x_tier: $(value).text().split('_')[0],
+                    y_tier: $(value).text().split('_')[1]
+                })
+            });
+
+            $('#make_reservation').prop('disabled', true);
+
+            make_reservation({ reservations });
+        } else {
+            alert('Please choose your seats!');
+        }
+
+        
     });
 
     function make_reservation(data) {
@@ -462,6 +475,7 @@ $( document ).ready(function() {
             },
             data: data,
             success: function(response) {
+                $('#make_reservation').prop('disabled', false);
                 if (response.length > 0) {
                     $.each(response, function( index, value ) {
                         cellId = value.x_tier + '_' + value.y_tier;
