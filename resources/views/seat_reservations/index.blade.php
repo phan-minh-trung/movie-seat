@@ -491,6 +491,10 @@ $( document ).ready(function() {
         var $this = $(this);
         var $seatId = $this.attr('id');
 
+        if ($this.closest('li').hasClass('sold')) {
+            return false;
+        }
+
         if ($this.is(':checked')) {
             $('.booked-list').append("<span class='seat-sold " + $seatId + "'>" + $seatId + "</span>");
             $this.closest('.seat').find('label').css('background', '#E6CAC4');
