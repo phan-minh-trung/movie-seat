@@ -7,8 +7,9 @@
 
 
     <div class="row">
-        <div class="col-md-4">
-            <div class="booked-list"></div>
+        <div class="col-md-4 ">
+            <div class="row booked-list"></div>
+            <div class="btn-buy"><button id="buy">Buy</button></div>
         </div>
         <div class="col-md-8">
             <div class="stage">
@@ -33,7 +34,7 @@
                             <label for="A_3">3</label>
                         </li>
                         <li class="seat">
-                            <input type="checkbox" id="A4" />
+                            <input type="checkbox" id="A_4" />
                             <label for="A_4">4</label>
                         </li>
                         <li class="seat">
@@ -474,11 +475,15 @@ $( document ).ready(function() {
 
     $('.cabin :checkbox').change(function() {
         var $this = $(this);
+        var $seatId = $this.attr('id');
 
         if ($this.is(':checked')) {
+            $('.booked-list').append("<span class='seat-sold " + $seatId + "'>" + $seatId + "</span>");
             $this.closest('.seat').find('label').css('background', '#E6CAC4');
+
         } else {
             $this.closest('.seat').find('label').css('background', '#B9DEA0');
+            $('.booked-list').find("span." + $seatId).remove();
         }
     });
 });
