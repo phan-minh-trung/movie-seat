@@ -31,7 +31,7 @@ class SeatReservationsController extends Controller
      */
     public function list()
     {
-        $reservations = SeatReservation::all();
+        $reservations = SeatReservation::paginate(25);
 
         return view('seat_reservations.list', compact('reservations'));
     }
