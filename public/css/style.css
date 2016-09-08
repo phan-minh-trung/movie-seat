@@ -1,0 +1,67 @@
+html, body {
+    height: 100%;
+    font-family: 'Lato';
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: table;
+    font-weight: 100;
+    font-family: 'Lato';
+}
+
+.seat-reservation{
+	text-align: center;
+}
+.title {
+    font-size: 30px;
+}
+.stage{
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 0 150px 150px;
+}
+ol {
+    list-style :none;
+    padding: 0;
+    margin: 0;
+}
+.seats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+.seat{
+    display: flex;
+    padding: 10px;
+    position: relative;
+}
+.seat input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+}
+label{
+    display: block;
+    position: relative;
+    height: 35px;
+    width: 35px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    background: #B9DEA0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.row-seat{
+    background: none !important;
+}
+.cabin{
+    margin: auto;
+    margin-bottom: 50px;
+    display: table;
+}
