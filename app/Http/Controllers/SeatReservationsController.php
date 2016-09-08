@@ -29,7 +29,7 @@ class SeatReservationsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function list()
+    public function list_seats()
     {
         $reservations = SeatReservation::paginate(25);
 
@@ -72,5 +72,23 @@ class SeatReservationsController extends Controller
         }
 
         return response()->json([]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function delete($id)
+    {
+
+        // printer_abort('hello')
+        SeatReservation::destroy($id);
+
+        Session::flash('flash_message', 'Seat deleted!');
+
+        return redirect('seat_reservation/list');
     }
 }

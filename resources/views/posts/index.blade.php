@@ -15,22 +15,13 @@
             @foreach($posts as $item)
                 <tr>
                     <td>{{ $item->id }}</td>
-                    <td>{{ $item->title }}</td><td>{{ $item->content }}</td><td>{{ $item->category }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->content }}</td>
+                    <td>{{ $item->category }}</td>
                     <td>
                         <a href="{{ url('/posts/' . $item->id) }}" class="btn btn-success btn-xs" title="View Post"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/posts/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Edit Post"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['/posts', $item->id],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<span class="glyphicon glyphicon-trash" aria-hidden="true" title="Delete Post" />', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete Post',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            )) !!}
-                        {!! Form::close() !!}
+                        
                     </td>
                 </tr>
             @endforeach

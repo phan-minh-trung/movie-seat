@@ -1,5 +1,7 @@
 <?php
 
+use App\Services\FizzbuzzService;
+
 class FizzbuzzServiceTest extends \PHPUnit_Framework_TestCase
 {
 
