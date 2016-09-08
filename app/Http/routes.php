@@ -16,3 +16,14 @@ Route::get('/', function () {
 });
 
 Route::resource('posts', 'PostsController');
+
+/**
+ * List all Seat Reservation
+ */
+Route::get('/seat_reservation', 'SeatReservationsController@index');
+Route::get('/seat_reservation/list', 'SeatReservationsController@list');
+
+/**
+ * Add A New Seat Reservation
+ */
+Route::post('/seat_reservation', 'SeatReservationsController@book');
