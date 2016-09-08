@@ -27,3 +27,5 @@ Route::get('/seat_reservation/list', 'SeatReservationsController@list');
  * Add A New Seat Reservation
  */
 Route::post('/seat_reservation', 'SeatReservationsController@book');
+
+Route::delete('/seat_reservation/delete/{id}', 'SeatReservationsController@delete');
