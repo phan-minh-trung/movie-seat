@@ -136,23 +136,27 @@
        <exec executable="phpcpd">
            <arg value="--log-pmd" />
            <arg value="${basedir}/build/logs/pmd-cpd.xml" />
-           <arg value="--exclude" />
+           <!-- <arg value="--exclude" />
            <arg path="${basedir}/tests" />
            <arg value="--exclude" />
-           <arg path="${basedir}/vendor" />
-           <arg path="${basedir}" />
+           <arg path="${basedir}/vendor" /> -->
+           <arg path="${basedir}/app" />
        </exec>
    </target>
 
    <target name="phpdoc" description="Generate API documentation using phpDocumentor 2">
-       <exec dir="${basedir}/app" executable="phpdoc" failonerror="true">
+       <exec dir="${basedir}" executable="phpdoc" failonerror="true">
            <!-- excluded directories need the / at the end, else phpdoc ignores it -->
-           <arg line="--title='test title' -d . -t build/api -i tests/ " />
+           <arg line="--title='test title' -d . -t build/api -i tests/,vendor/ " />
        </exec>
    </target>
 
    <target name="phpunit" description="Run unit tests with PHPUnit">
-       <exec executable="phpunit" failonerror="true"/>
+       <exec executable="phpunit" failonerror="true">
+          <arg line="--coverage-clover ${basedir}/build/logs/clover.xml
+                --coverage-html ${basedir}/build/logs/
+                ."/>
+        </exec>
    </target>
 
    <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
@@ -160,7 +164,9 @@
            <arg value="--log" />
            <arg path="${basedir}/build/logs" />
            <arg value="--ignore" />
-           <arg path="${basedir}/tests,${basedir}/vendor" />
+           <arg path="${basedir}/tests" />
+           <arg value="--ignore" />
+           <arg path="${basedir}/vendor" />
            <arg value="--source" />
            <arg path="${basedir}" />
            <arg value="--output" />
