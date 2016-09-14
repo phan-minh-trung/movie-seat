@@ -49,6 +49,7 @@
                <include name="**/*.php" />
                <!-- exclude the tests directory, repeat line below to exclude more -->
                <exclude name="tests/**" />
+               <exclude name="vendor/**" />
                <modified />
            </fileset>
 
