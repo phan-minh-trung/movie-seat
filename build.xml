@@ -66,7 +66,7 @@
            <arg value="--exclude" />
            <arg path="${basedir}/tests" />
            <arg value="--exclude" />
-           <arg path="${basedir}/vendors" />
+           <arg path="${basedir}/vendor" />
            <arg value="--log-csv" />
            <arg value="${basedir}/build/logs/phploc.csv" />
            <arg path="${basedir}" />
@@ -75,7 +75,7 @@
 
    <target name="pdepend" description="Calculate software metrics using PHP_Depend">
        <exec executable="pdepend">
-           <arg value="--ignore=${basedir}/tests,${basedir}/docs,${basedir}/vendors" />
+           <arg value="--ignore=${basedir}/tests,${basedir}/docs,${basedir}/vendor" />
            <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
            <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
            <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
@@ -92,7 +92,7 @@
             <arg value="--exclude" />
             <arg value="${basedir}/tests" />
             <arg value="--exclude" />
-            <arg path="${basedir}/vendors" />
+            <arg path="${basedir}/vendor" />
         </exec>
     </target>
 
@@ -106,7 +106,7 @@
            <arg value="--exclude" />
            <arg value="${basedir}/tests" />
            <arg value="--exclude" />
-           <arg path="${basedir}/vendors" />
+           <arg path="${basedir}/vendor" />
        </exec>
    </target>
 
@@ -114,7 +114,7 @@
             description="Find coding standard violations with CodeSniffer. Use on command line before committing.">
         <exec executable="phpcs">
             <arg value="--standard=Zend" />
-            <arg value="--ignore=${basedir}/tests,${basedir}/vendors" />
+            <arg value="--ignore=${basedir}/tests,${basedir}/vendor" />
             <arg value="--extensions=php" />
             <arg path="${basedir}" />
         </exec>
@@ -126,7 +126,7 @@
            <arg value="--report=checkstyle" />
            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
            <arg value="--standard=Zend" />
-           <arg value="--ignore=${basedir}/tests,${basedir}/vendors" />
+           <arg value="--ignore=${basedir}/tests,${basedir}/vendor" />
            <arg value="--extensions=php" />
            <arg path="${basedir}" />
        </exec>
@@ -139,7 +139,7 @@
            <arg value="--exclude" />
            <arg path="${basedir}/tests" />
            <arg value="--exclude" />
-           <arg path="${basedir}/vendors" />
+           <arg path="${basedir}/vendor" />
            <arg path="${basedir}" />
        </exec>
    </target>
@@ -160,7 +160,7 @@
            <arg value="--log" />
            <arg path="${basedir}/build/logs" />
            <arg value="--ignore" />
-           <arg path="${basedir}/tests,${basedir}/vendors" />
+           <arg path="${basedir}/tests,${basedir}/vendor" />
            <arg value="--source" />
            <arg path="${basedir}" />
            <arg value="--output" />
