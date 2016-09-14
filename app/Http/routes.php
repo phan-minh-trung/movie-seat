@@ -21,7 +21,7 @@ Route::resource('posts', 'PostsController');
  * List all Seat Reservation
  */
 Route::get('/seat_reservation', 'SeatReservationsController@index');
-Route::get('/seat_reservation/list', 'SeatReservationsController@list');
+Route::get('/seat_reservation/list_seats', 'SeatReservationsController@list_seats');
 
 /**
  * Add A New Seat Reservation

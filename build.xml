@@ -151,7 +151,7 @@
        <exec executable="phpunit" failonerror="true">
           <arg line="--coverage-clover ${basedir}/build/logs/clover.xml
                 --coverage-html ${basedir}/build/logs/
-                ."/>
+                tests/"/>
         </exec>
    </target>
 

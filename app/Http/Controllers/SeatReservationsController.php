@@ -29,7 +29,7 @@ class SeatReservationsController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function list()
+    public function list_seats()
     {
         $reservations = SeatReservation::paginate(25);
 
