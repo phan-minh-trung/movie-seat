@@ -12,7 +12,8 @@
         "sebastian/phpcpd": "^2.0",
         "phpmd/phpmd": "^2.4",
         "squizlabs/php_codesniffer": "^2.7",
-        "phpunit/php-code-coverage": "^2.2"
+        "phpunit/php-code-coverage": "^2.2",
+        "pdepend/pdepend": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
